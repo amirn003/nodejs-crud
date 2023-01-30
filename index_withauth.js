@@ -33,8 +33,10 @@ app.use("/user", (req,res,next)=>{
 app.use("/user", routes);
 
 app.post("/login", (req,res) => {
-    const user = req.body.user;
+    //const user = req.body.user;
+    const user = req.query.user;
     if (!user) {
+        console.log(user);
         return res.status(404).json({message: "Body Empty"});
     }
     let accessToken = jwt.sign({
